@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
+import NavBar from "../components/nav/navbar";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -11,8 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1> netflix</h1>
-
+      <NavBar username="farya@gmail.com" />
       <Banner
         title="Purple Hearts"
         subTitle="An aspiring musician agrees to a marriage of convenience with a soon-to-deploy Marine, but a tragedy soon turns their fake relationship all too real."
