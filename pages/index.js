@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
+import Card from "../components/card/card";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -18,6 +19,9 @@ export default function Home() {
         subTitle="An aspiring musician agrees to a marriage of convenience with a soon-to-deploy Marine, but a tragedy soon turns their fake relationship all too real."
         imgUrl="/static/purple-hearts.jpg"
       />
+      <Card imgUrl="/static/purple-hearts.jpg" size="large" />
+      <Card imgUrl="/static/purple-hearts.jpg" size="medium" />
+      <Card imgUrl="/static/purple-hearts.jpg" size="small" />
     </div>
   );
 }
