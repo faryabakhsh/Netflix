@@ -7,6 +7,21 @@ import NavBar from "../components/nav/navbar";
 import SectionCards from "../components/card/section-card";
 
 export default function Home() {
+  const disneyvideos = [
+    {
+      imgUrl: "/static/purple-hearts.jpg",
+    },
+    {
+      imgUrl: "/static/purple-hearts.jpg",
+    },
+    {
+      imgUrl: "/static/purple-hearts.jpg",
+    },
+    {
+      imgUrl: "/static/purple-hearts.jpg",
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +37,14 @@ export default function Home() {
         imgUrl="/static/purple-hearts.jpg"
       />
 
-      <SectionCards title="disney" />
+      <div className={styles.sectionWrapper}>
+        <SectionCards title="Disney" videos={disneyvideos} size="large" />
+        <SectionCards
+          title="productivity videos"
+          videos={disneyvideos}
+          size="medium"
+        />
+      </div>
     </div>
   );
 }
