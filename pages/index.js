@@ -5,22 +5,10 @@ import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
 
 import SectionCards from "../components/card/section-card";
+import { getVideos } from "../lib/videos";
 
 export default function Home() {
-  const disneyvideos = [
-    {
-      imgUrl: "/static/purple-hearts.jpg",
-    },
-    {
-      imgUrl: "/static/purple-hearts.jpg",
-    },
-    {
-      imgUrl: "/static/purple-hearts.jpg",
-    },
-    {
-      imgUrl: "/static/purple-hearts.jpg",
-    },
-  ];
+  const disneyvideos = getVideos();
 
   return (
     <div className={styles.container}>
