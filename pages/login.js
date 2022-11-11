@@ -8,6 +8,14 @@ const Login = () => {
     console.log("hi button");
     e.preventDefault();
   };
+
+  const handleOnChangeEmail = (e) => {
+    setUserMsg("");
+    console.log("event", e);
+    const email = e.target.value;
+    setEmail(email);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -37,7 +45,7 @@ const Login = () => {
             placeholder="Emial address"
             className={styles.emailInput}
           />
-
+          <p className={styles.userMsg}>{userMsg}</p>
           <button className={styles.loginBtn} onClick={handleLoginWithEmail}>
             Sign In
           </button>
