@@ -4,16 +4,25 @@ import Link from "next/link";
 import styles from "../styles/login.module.css";
 
 const Login = () => {
-  const handleLoginWithEmail = (e) => {
-    console.log("hi button");
-    e.preventDefault();
-  };
-
+  const [email, setEmail] = useState("");
+  const [userMsg, setUserMsg] = useState("");
   const handleOnChangeEmail = (e) => {
     setUserMsg("");
     console.log("event", e);
     const email = e.target.value;
     setEmail(email);
+  };
+
+  const handleLoginWithEmail = (e) => {
+    console.log("hi button");
+    e.preventDefault();
+
+    if (email) {
+      // route to dashboard
+    } else {
+      // show user message
+      setUserMsg("Enter a valid email address");
+    }
   };
 
   return (
@@ -44,6 +53,7 @@ const Login = () => {
             type="text"
             placeholder="Emial address"
             className={styles.emailInput}
+            onChange={handleOnChangeEmail}
           />
           <p className={styles.userMsg}>{userMsg}</p>
           <button className={styles.loginBtn} onClick={handleLoginWithEmail}>
