@@ -2,23 +2,30 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/login.module.css";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [userMsg, setUserMsg] = useState("");
+
+  const router = useRouter();
+
   const handleOnChangeEmail = (e) => {
     setUserMsg("");
-    console.log("event", e);
     const email = e.target.value;
     setEmail(email);
   };
 
   const handleLoginWithEmail = (e) => {
-    console.log("hi button");
     e.preventDefault();
 
     if (email) {
-      // route to dashboard
+      if (email == "faryabakhsh@gmail.com") {
+        router.push("/");
+      } else {
+        setUserMsg("something went wrong logging in");
+      }
     } else {
       // show user message
       setUserMsg("Enter a valid email address");
