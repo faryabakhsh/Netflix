@@ -6,6 +6,7 @@ import NavBar from "../components/nav/navbar";
 
 import SectionCards from "../components/card/section-card";
 import { getVideos, getPopularVideos } from "../lib/videos";
+import { magic } from "../lib/magic-client";
 
 export async function getServerSideProps() {
   const disneyvideos = await getVideos("disney trailer");
@@ -27,6 +28,7 @@ export default function Home({
   productivityvideos,
   popularvideos,
 }) {
+  console.log({ magic });
   return (
     <div className={styles.container}>
       <Head>
