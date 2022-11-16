@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "../styles/login.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { magic } from "../lib/magic-client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,12 +18,21 @@ const Login = () => {
     setEmail(email);
   };
 
-  const handleLoginWithEmail = (e) => {
+  const handleLoginWithEmail = async (e) => {
     e.preventDefault();
 
     if (email) {
       if (email == "faryabakhsh@gmail.com") {
-        router.push("/");
+        // router.push("/");
+        try {
+          const didToken = await magic.auth.loginWithMagicLink({
+            email,
+          });
+          console.log({ didToken });
+        } catch (error) {
+          // Handle errors if required!
+          console.error("Something went wrong logging in", error);
+        }
       } else {
         setUserMsg("something went wrong logging in");
       }
