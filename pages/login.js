@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     if (email) {
-      if (email == "faryabakhsh@gmail.com") {
+      if (email === "faryabakhsh@gmail.com") {
         // router.push("/");
         try {
           const didToken = await magic.auth.loginWithMagicLink({
