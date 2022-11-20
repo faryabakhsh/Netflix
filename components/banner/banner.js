@@ -1,12 +1,14 @@
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import { useRouter } from "next/router";
 import styles from "./banner.module.css";
 import Image from "next/image";
 
 const Banner = (props) => {
-  const { title, subTitle, imgUrl } = props;
+  const router = useRouter();
+  const { title, subTitle, imgUrl, videoId } = props;
 
   const handleOnPlay = () => {
     console.log("clicked");
+    router.push(`video/${videoId}`);
   };
 
   return (
