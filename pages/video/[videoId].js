@@ -3,19 +3,12 @@ import Modal from "react-modal";
 import styles from "../../styles/video.module.css";
 import clsx from "classnames";
 import { getYoutubeVideoById } from "../../lib/videos";
+import NavBar from "../../components/nav/navbar";
 
 Modal.setAppElement("#__next");
 
-export async function getStaticProps() {
-  // const video = {
-  //   title: "Hi cute dog",
-  //   publishTime: "1990-01-01",
-  //   description:
-  //     "A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger?",
-  //   channelTitle: "Paramount Pictures",
-  //   viewCount: 10000,
-  // };
-  const videoId = "ILRs2r6lcHY&ab";
+export async function getStaticProps(context) {
+  const videoId = context.params.videoId;
   const videoArray = await getYoutubeVideoById(videoId);
   return {
     props: {
@@ -36,7 +29,7 @@ export async function getStaticPaths() {
 
 const Video = ({ video }) => {
   const router = useRouter();
-  console.log({ router });
+  const videoId = router.query.videoId;
 
   const {
     title,
@@ -48,6 +41,7 @@ const Video = ({ video }) => {
 
   return (
     <div className={styles.container}>
+      <NavBar />
       <Modal
         isOpen={true}
         contentLabel="Example Modal"
@@ -61,7 +55,7 @@ const Video = ({ video }) => {
           type="text/html"
           width="100%"
           height="360"
-          src={`https://www.youtube.com/embed/${router.query.videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
           frameBorder="0"
         ></iframe>
         <div className={styles.modalBody}>
