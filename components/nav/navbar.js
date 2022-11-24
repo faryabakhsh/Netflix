@@ -1,15 +1,33 @@
 import styles from "./navbar.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { magic } from "../../lib/magic-client";
 
-const NavBar = (props) => {
-  const { username } = props;
-
+const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false); // by default it is going to be false because by default we do not want to show it
 
+  const [username, setUsername] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    async function getUsername() {
+      try {
+        const { email } = await magic.user.getMetadata();
+        if (email) {
+          setUsername(email);
+        }
+      } catch (error) {
+        console.log("Error retrieving email:", error);
+      }
+    }
+    getUsername();
+  }, []);
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+  };
 
   const handleOnClickHome = (e) => {
     e.preventDefault();
@@ -64,7 +82,9 @@ const NavBar = (props) => {
               <div className={styles.navDropdown}>
                 <div>
                   <Link href="/login">
-                    <a className={styles.linkName}>Sign Out</a>
+                    <a className={styles.linkName} onClick={handleSignOut}>
+                      Sign Out
+                    </a>
                   </Link>
                   <div className={styles.lineWrapper}></div>
                 </div>

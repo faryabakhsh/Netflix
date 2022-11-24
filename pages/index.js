@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
-import { startFetchMyQuery } from "../lib/db/hasura";
+// import { startFetchMyQuery } from "../lib/db/hasura";
 import SectionCards from "../components/card/section-card";
 import { getVideos, getPopularVideos } from "../lib/videos";
 
@@ -27,8 +27,6 @@ export default function Home({
   productivityvideos,
   popularvideos,
 }) {
-  startFetchMyQuery();
-
   return (
     <div className={styles.container}>
       <Head>
@@ -37,7 +35,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-        <NavBar username="farya@gmail.com" />
+        <NavBar />
         <Banner
           title="Purple Hearts"
           subTitle="An aspiring musician agrees to a marriage of convenience with a soon-to-deploy Marine, but a tragedy soon turns their fake relationship all too real."
