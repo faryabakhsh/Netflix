@@ -6,7 +6,7 @@ import Image from "next/image";
 import { magic } from "../../lib/magic-client";
 
 const NavBar = () => {
-  const [showDropdown, setShowDropdown] = useState(false); // by default it is going to be false because by default we do not want to show it
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const [username, setUsername] = useState("");
   const router = useRouter();
@@ -25,8 +25,17 @@ const NavBar = () => {
     getUsername();
   }, []);
 
-  const handleSignOut = (e) => {
+  const handleSignOut = async (e) => {
     e.preventDefault();
+
+    try {
+      await magic.user.logout();
+      console.log(await magic.user.isLoggedIn());
+      router.push("/login");
+    } catch (error) {
+      console.log("Error logging out:", error);
+      router.push("/login");
+    }
   };
 
   const handleOnClickHome = (e) => {
@@ -81,12 +90,10 @@ const NavBar = () => {
             {showDropdown && (
               <div className={styles.navDropdown}>
                 <div>
-                  <Link href="/login">
-                    <a className={styles.linkName} onClick={handleSignOut}>
-                      Sign Out
-                    </a>
-                  </Link>
-                  <div className={styles.lineWrapper}></div>
+                  <a className={styles.linkName} onClick={handleSignOut}>
+                    Sign Out
+                  </a>
+                  =<div className={styles.lineWrapper}></div>
                 </div>
               </div>
             )}
