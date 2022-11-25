@@ -1,6 +1,6 @@
 import styles from "./navbar.module.css";
 import { useRouter } from "next/router";
-import Link from "next/link";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { magic } from "../../lib/magic-client";
