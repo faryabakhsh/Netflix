@@ -1,6 +1,8 @@
 export default async function login(req, res) {
   if (req.method === "POST") {
     try {
+      const auth = req.headers;
+      console.log({ auth });
       res.send({ done: true });
     } catch (error) {
       console
