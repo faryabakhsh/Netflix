@@ -63,7 +63,21 @@ const Video = ({ video }) => {
             <div className={styles.col1}>
               <p className={styles.publishTime}>{publishTime}</p>
               <p className={styles.title}>{title}</p>
-              <p className={styles.description}>{description}</p>
+              <p className={styles.description}>
+                yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy Explore the adventures
+                beyond our world in the NEW TRAILER for Disneys #StrangeWorld,
+                in theaters November 23! The ...Explore the adventures beyond
+                our world in the NEW TRAILER for Disneys #StrangeWorld, in
+                theaters November 23! The ...Explore the adventures beyond our
+                world in the NEW TRAILER for Disneys #StrangeWorld, in theaters
+                November 23! The ...Explore the adventures beyond our world in
+                the NEW TRAILER for Disneys #StrangeWorld, in theaters November
+                23! The ...Explore the adventures beyond our world in the NEW
+                TRAILER for Disneye adventures beyond our world in the NEW
+                TRAILER for Disnes #StrangeWorld, in theaters November 23! The
+                ...Explore the adventures beyond our world in the NEW TRAILER
+                for Disnes #StrangeWorld, in theaters November 23! The ...
+              </p>
             </div>
             <div className={styles.col2}>
               <p className={clsx(styles.subText, styles.subTextWrapper)}>
