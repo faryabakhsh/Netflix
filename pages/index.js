@@ -3,30 +3,33 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner/banner";
 import NavBar from "../components/nav/navbar";
-// import { startFetchMyQuery } from "../lib/db/hasura";
+
 import SectionCards from "../components/card/section-card";
 import { getVideos, getPopularVideos } from "../lib/videos";
 import { startFetchMyQuery } from "../lib/db/hasura";
 
 export async function getServerSideProps() {
-  const disneyvideos = await getVideos("disney trailer");
+  const disneyVideos = await getVideos("disney trailer");
+  const productivityVideos = await getVideos("Productivity");
 
-  const travelvideos = await getVideos("travel");
+  const travelVideos = await getVideos("indie music");
 
-  const productivityvideos = await getVideos("productivity");
-
-  const popularvideos = await getVideos("popular videos");
-
+  const popularVideos = await getPopularVideos();
   return {
-    props: { disneyvideos, travelvideos, productivityvideos, popularvideos },
-  }; // disney videos get passed as props to our home page
+    props: {
+      disneyVideos,
+      travelVideos,
+      productivityVideos,
+      popularVideos,
+    },
+  };
 }
 
 export default function Home({
-  disneyvideos,
-  travelvideos,
-  productivityvideos,
-  popularvideos,
+  disneyVideos,
+  travelVideos,
+  productivityVideos,
+  popularVideos,
 }) {
   startFetchMyQuery();
   return (
@@ -46,14 +49,14 @@ export default function Home({
         />
 
         <div className={styles.sectionWrapper}>
-          <SectionCards title="Disney" videos={disneyvideos} size="large" />
-          <SectionCards title="Travel" videos={travelvideos} size="small" />
+          <SectionCards title="Disney" videos={disneyVideos} size="large" />
+          <SectionCards title="Travel" videos={travelVideos} size="small" />
           <SectionCards
             title="Productivity"
-            videos={productivityvideos}
+            videos={productivityVideos}
             size="medium"
           />
-          <SectionCards title="Popular" videos={popularvideos} size="small" />
+          <SectionCards title="Popular" videos={popularVideos} size="small" />
         </div>
       </div>
     </div>

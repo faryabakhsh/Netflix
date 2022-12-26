@@ -73,14 +73,16 @@ const Login = () => {
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
           <Link className={styles.logoLink} href="/">
-            <div className={styles.logoWrapper}>
-              <Image
-                src="/static/netflix.svg"
-                alt="Netflix logo"
-                width="128px"
-                height="34px"
-              />
-            </div>
+            <a>
+              <div className={styles.logoWrapper}>
+                <Image
+                  src="/static/netflix.svg"
+                  alt="Netflix logo"
+                  width="128px"
+                  height="34px"
+                />
+              </div>
+            </a>
           </Link>
         </div>
       </header>
@@ -88,14 +90,16 @@ const Login = () => {
       <main className={styles.main}>
         <div className={styles.mainWrapper}>
           <h1 className={styles.signinHeader}>Sign In</h1>
+
           <input
             type="text"
-            placeholder="Emial address"
+            placeholder="Email address"
             className={styles.emailInput}
             onChange={handleOnChangeEmail}
           />
+
           <p className={styles.userMsg}>{userMsg}</p>
-          <button className={styles.loginBtn} onClick={handleLoginWithEmail}>
+          <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
             {isLoading ? "Loading..." : "Sign In"}
           </button>
         </div>
