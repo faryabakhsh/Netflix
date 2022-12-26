@@ -7,13 +7,9 @@ export default async function login(req, res) {
     try {
       const auth = req.headers.authorization;
       const didToken = auth ? auth.substr(7) : "";
-      console.log({ didToken });
 
-      //invoke magic
       const metadata = await magicAdmin.users.getMetadataByToken(didToken);
-      console.log({ metadata });
 
-      //create jwt
       const token = jwt.sign(
         {
           ...metadata,
@@ -25,15 +21,12 @@ export default async function login(req, res) {
             "x-hasura-user-id": `${metadata.issuer}`,
           },
         },
-        "thisisasecrettthisisasecrettt1234"
+        process.env.JWT_SECRET
       );
-      console.log({ token });
 
-      // check if user exits
+      const isNewUserQuery = await isNewUser(token, metadata.issuer);
 
-      const isNewUserQuery = await isNewUser(token);
-
-      res.send({ done: true });
+      res.send({ done: true, isNewUserQuery });
     } catch (error) {
       console.error("something went wrong logging in", error);
       res.status(500).send({ done: false });
