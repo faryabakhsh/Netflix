@@ -24,6 +24,7 @@ export default async function login(req, res) {
         },
         process.env.JWT_SECRET
       );
+      console.log({ token });
 
       isNewUserQuery && (await createNewUser(token, metadata));
       setTokenCookie(token, res);
