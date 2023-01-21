@@ -12,31 +12,37 @@ export default async function stats(req, resp) {
       if (!token) {
         resp.status(403).send({});
       } else {
-        const videoId = req.query.videoId;
+        // const videoId = req.query.videoId;
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const { videoId, favourited, watched = true } = req.body;
 
-        const userId = decodedToken.issuer;
-        // const videoId = "4zH5iYM4wJo";
-        const doesStatsExit = await findVideoIdByUser(token, userId, videoId);
+        if (videoId) {
+          const userId = decodedToken.issuer;
+          const doesStatsExist = await findVideoIdByUser(
+            token,
+            userId,
+            videoId
+          );
 
-        if (doesStatsExit) {
-          // update it
-          const response = await updateStats(token, {
-            watched: true,
-            userId,
-            videoId,
-            favourited: 0,
-          });
-          resp.send({ msg: "it works", response });
-        } else {
-          // add it
-          const response = await insertStats(token, {
-            watched: false,
-            userId,
-            videoId,
-            favourited: 0,
-          });
-          resp.send({ msg: "it works", response });
+          if (doesStatsExist) {
+            // update it
+            const response = await updateStats(token, {
+              watched,
+              userId,
+              videoId,
+              favourited,
+            });
+            resp.send({ data: response });
+          } else {
+            // add it
+            const response = await insertStats(token, {
+              watched,
+              userId,
+              videoId,
+              favourited,
+            });
+            resp.send({ data: response });
+          }
         }
       }
     } catch (error) {
