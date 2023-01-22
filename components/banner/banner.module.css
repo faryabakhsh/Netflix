@@ -52,7 +52,7 @@
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
   color: var(--white10);
-  -webkit-text-stroke: 1px black; /* width and color */
+  -webkit-text-stroke: 1px gray; /* width and color */
 }
 
 .playBtnWrapper {
@@ -62,7 +62,7 @@
 }
 
 .playText {
-  color: black;
+  color: rgb(31, 41, 55);
   font-weight: 600;
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
