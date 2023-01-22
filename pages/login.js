@@ -65,7 +65,7 @@ const Login = () => {
         }
       } catch (error) {
         // Handle errors if required!
-        console.error("Something went wrong logging in", error);
+
         setIsLoading(false);
       }
     } else {

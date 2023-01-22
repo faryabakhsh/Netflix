@@ -66,7 +66,7 @@ export default Card;
 //   } = props;
 //   const [imgSrc, setImgSrc] = useState(imgUrl);
 //   const onhandleError = () => {
-//     console.log(" hi error");
+//   ;
 //     setImgSrc(
 //       "https://images.unsplash.com/photo-1542423348-821c6bb30fe6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
 //     );

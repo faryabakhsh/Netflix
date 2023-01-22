@@ -22,9 +22,7 @@ const NavBar = () => {
           setUsername(email);
           setDidToken(didToken);
         }
-      } catch (error) {
-        console.error("Error retrieving email", error);
-      }
+      } catch (error) {}
     };
     applyUsernameInNav();
   }, []);
@@ -58,7 +56,6 @@ const NavBar = () => {
 
       const res = await response.json();
     } catch (error) {
-      console.error("Error logging out", error);
       router.push("/login");
     }
   };
@@ -136,12 +133,12 @@ export default NavBar;
 //       try {
 //         const { email, issuer } = await magic.user.getMetadata();
 //         const didToken = await magic.user.getIdToken();
-//         console.log({ didToken });
+//
 //         if (email) {
 //           setUsername(email);
 //         }
 //       } catch (error) {
-//         console.log("Error retrieving email:", error);
+//
 //       }
 //     }
 //     getUsername();
@@ -152,10 +149,10 @@ export default NavBar;
 
 //     try {
 //       await magic.user.logout();
-//       console.log(await magic.user.isLoggedIn());
+//
 //       router.push("/login");
 //     } catch (error) {
-//       console.log("Error logging out:", error);
+//
 //       router.push("/login");
 //     }
 //   };

@@ -50,7 +50,6 @@ export default async function stats(req, resp) {
       }
     }
   } catch (error) {
-    console.error("Error occurred /stats", error);
     resp.status(500).send({ done: false, error: error?.message });
   }
 }
@@ -105,7 +104,7 @@ export default async function stats(req, resp) {
 //         }
 //       }
 //     } catch (error) {
-//       console.error("Error occurred /stats", error);
+//
 //       resp.status(500).send({ done: false, error: error?.message });
 //     }
 //   } else {

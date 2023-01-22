@@ -37,7 +37,6 @@ export default SectionCards;
 
 // const SectionCards = (props) => {
 //   const { title, videos = [], size, shouldWrap = false } = props;
-//   console.log({ videos });
 
 //   return (
 //     <section className={styles.container}>
