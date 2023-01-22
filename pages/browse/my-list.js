@@ -1,9 +1,22 @@
 import NavBar from "../../components/nav/navbar";
 import Head from "next/head";
-import SectionCards from "../../components/card/section-card";
+import SectionCards from "../../components/card/section-cards";
 import styles from "../../styles/MyList.module.css";
+import { redirectUser } from "../../utils/redirectUser";
+import { getMyList } from "../../lib/videos";
 
-const MyList = () => {
+export async function getServerSideProps(context) {
+  const { userId, token } = await redirectUser(context);
+  const videos = await getMyList(userId, token);
+
+  return {
+    props: {
+      myListVideos: videos,
+    },
+  };
+}
+
+const MyList = ({ myListVideos }) => {
   return (
     <div>
       <Head>
@@ -12,7 +25,13 @@ const MyList = () => {
       <main className={styles.main}>
         <NavBar />
         <div className={styles.sectionWrapper}>
-          <SectionCards title="My List" videos={[]} size="small" />
+          <SectionCards
+            title="My List"
+            videos={myListVideos}
+            size="small"
+            shouldWrap
+            shouldScale={false}
+          />
         </div>
       </main>
     </div>
