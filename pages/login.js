@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { magic } from "../lib/magic-client";
 
-import styles from "../styles/Login.module.css";
+import styles from "../styles/login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
